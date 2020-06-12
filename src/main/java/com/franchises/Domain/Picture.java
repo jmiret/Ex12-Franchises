@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Picture {
@@ -18,9 +20,16 @@ public class Picture {
 	
 	private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 	private Date dateReg;
-			
+	
+	
+	/*
+	@ManyToOne
+	@JoinColumn(name="id")
+	private Shop shop;
+	*/
+
 	public Picture() {}
-		
+	
 	public Picture(String pictureName, double price) {
 		super();
 		this.pictureName = pictureName;
@@ -36,7 +45,25 @@ public class Picture {
 		this.price = price;
 		this.dateReg = new Date();
 	}
-		
+	
+	/*
+	public Picture(String pictureName, double price, Shop shop) {
+		super();
+		this.pictureName = pictureName;
+		this.pictureAuthor = "Anonymous";		
+		this.price = price;
+		this.dateReg = new Date();
+	}
+				
+	public Picture(String pictureName, String pictureAuthor, double price, Shop shop) {
+		super();
+		this.pictureName = pictureName;
+		this.pictureAuthor = pictureAuthor;		
+		this.price = price;
+		this.dateReg = new Date();
+	}
+	*/
+	
 	public String getPictureAuthor() {
 		return pictureAuthor;
 	}

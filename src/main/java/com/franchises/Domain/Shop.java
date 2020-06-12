@@ -14,11 +14,11 @@ public class Shop {
 	private @Id @GeneratedValue long id;
 	private String name;
 	private int picturesNumber;
-	
+		
 	@ManyToOne
 	private Picture picture;
-	
-	@OneToMany
+			
+	@OneToMany(mappedBy = "id")
 	private List<Picture> pictures;	
 		
 	public Shop() {}
@@ -52,11 +52,11 @@ public class Shop {
 	public void setPicturesNumber(int picturesNumber) {
 		this.picturesNumber = picturesNumber;
 	}
-	
+		
 	public void addPicture(Picture picture) {
 		this.pictures.add(picture);
 	}
-		
+			
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -90,7 +90,7 @@ public class Shop {
 
 	@Override
 	public String toString() {
-		return "Shop [name=" + name + ", picturesNumber=" + picturesNumber + "]";
+		return "Shop [id=" + id + ", name=" + name + ", picturesNumber=" + picturesNumber + "]";
 	}
 	
 }

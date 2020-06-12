@@ -18,7 +18,7 @@ public class LoadDatabase {
 	
 	@Bean
 	//CommandLineRunner initDatabase(ShopRepository shopRepository, PictureRepository pictureRepository) {
-	CommandLineRunner initDatabase(ShopRepository shopRepository, PictureRepository pictureRepository) {
+	CommandLineRunner initDatabase(ShopRepository shopRepository) {
 		
 		return args -> {
 			
