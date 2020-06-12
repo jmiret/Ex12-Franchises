@@ -10,7 +10,7 @@ public class Shop {
 	private @Id @GeneratedValue long id;
 	private String name;
 	private int picturesNumber;
-	
+		
 	public Shop() {}
 
 	public Shop(String name, int picturesNumber) {
@@ -42,7 +42,7 @@ public class Shop {
 	public void setPicturesNumber(int picturesNumber) {
 		this.picturesNumber = picturesNumber;
 	}
-
+		
 	@Override
 	public int hashCode() {
 		final int prime = 31;
