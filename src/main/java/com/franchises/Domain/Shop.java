@@ -3,6 +3,7 @@ package com.franchises.Domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Shop {
@@ -10,6 +11,9 @@ public class Shop {
 	private @Id @GeneratedValue long id;
 	private String name;
 	private int picturesNumber;
+	
+	@ManyToOne
+	private Picture picture;
 		
 	public Shop() {}
 

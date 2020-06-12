@@ -17,8 +17,7 @@ public class FranchisesApplication {
 		SpringApplication app = new SpringApplication(FranchisesApplication.class);
         app.setDefaultProperties(Collections
           .singletonMap("server.port", "8081"));
-        app.run(args);
-	
+        app.run(args);	
 		
 	}
 

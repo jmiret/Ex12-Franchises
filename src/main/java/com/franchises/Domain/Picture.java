@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Picture {
@@ -16,9 +15,6 @@ public class Picture {
 	private String pictureName;
 	private double price;
 	private long shopID;
-	
-	@ManyToOne
-	private Shop shop;
 	
 	private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 	private Date dateReg;
