@@ -1,9 +1,12 @@
 package com.franchises.Domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Shop {
@@ -14,6 +17,9 @@ public class Shop {
 	
 	@ManyToOne
 	private Picture picture;
+	
+	@OneToMany
+	private List<Picture> pictures;	
 		
 	public Shop() {}
 
@@ -45,6 +51,10 @@ public class Shop {
 
 	public void setPicturesNumber(int picturesNumber) {
 		this.picturesNumber = picturesNumber;
+	}
+	
+	public void addPicture(Picture picture) {
+		this.pictures.add(picture);
 	}
 		
 	@Override

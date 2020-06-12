@@ -20,44 +20,7 @@ public class Picture {
 	private Date dateReg;
 			
 	public Picture() {}
-	
-	/*
-	public Picture(String pictureName, double price, long shopID) {
-		super();
-		this.pictureName = pictureName;
-		this.price = price;		
-		this.shopID = shopID;
-		this.pictureAuthor = "Anonymous";
-	}
-
-	public Picture(String pictureName, double price, Date dateReg, long shopID) {
-		super();
-		this.pictureName = pictureName;
-		this.price = price;
-		this.dateReg = dateReg;
-		this.shopID = shopID;
-		this.pictureAuthor = "Anonymous";
-	}
-					
-	public Picture(String pictureName, String pictureAuthor, double price, Date dateReg, long shopID) {
-		super();
-		this.pictureName = pictureName;
-		this.pictureAuthor = pictureAuthor;		
-		this.price = price;
-		this.dateReg = dateReg;
-		this.shopID = shopID;
-	}
-	*/
-	
-	public Picture(String pictureName, String pictureAuthor, double price) {
-		super();
-		this.pictureName = pictureName;
-		this.pictureAuthor = pictureAuthor;		
-		this.price = price;
-		this.dateReg = new Date();
-	}
-	
-	
+		
 	public Picture(String pictureName, double price) {
 		super();
 		this.pictureName = pictureName;
@@ -65,8 +28,15 @@ public class Picture {
 		this.price = price;
 		this.dateReg = new Date();
 	}
-	
-	
+				
+	public Picture(String pictureName, String pictureAuthor, double price) {
+		super();
+		this.pictureName = pictureName;
+		this.pictureAuthor = pictureAuthor;		
+		this.price = price;
+		this.dateReg = new Date();
+	}
+		
 	public String getPictureAuthor() {
 		return pictureAuthor;
 	}
@@ -128,7 +98,6 @@ public class Picture {
 		long temp;
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + (int) (shopID ^ (shopID >>> 32));
 		return result;
 	}
 
@@ -165,15 +134,13 @@ public class Picture {
 			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
-		if (shopID != other.shopID)
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "Picture [id=" + id + ", pictureAuthor=" + pictureAuthor + ", pictureName=" + pictureName + ", price="
-				+ price + ", shopID=" + shopID + ", format=" + format + ", dateReg=" + dateReg + "]";
+				+ price + ", format=" + format + ", dateReg=" + dateReg + "]";
 	}
 	
 }

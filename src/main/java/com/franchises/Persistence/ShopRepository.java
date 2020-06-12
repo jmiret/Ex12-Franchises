@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.franchises.Domain.Picture;
 import com.franchises.Domain.Shop;
 
+//@Repository no hace falta ya que para Spring JpaRepository ja existe
 @Transactional(readOnly = true)
 public interface ShopRepository extends JpaRepository<Shop, Long> {
 
