@@ -15,10 +15,11 @@ public class Shop {
 	private String name;
 	private int picturesNumber;
 		
-	@ManyToOne
+	@OneToMany
 	private Picture picture;
 			
-	@OneToMany(mappedBy = "id")
+	//@OneToMany(mappedBy = "id")
+	@OneToMany(targetEntity = Picture.class)
 	private List<Picture> pictures;	
 		
 	public Shop() {}

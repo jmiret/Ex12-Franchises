@@ -11,4 +11,6 @@ import com.franchises.Domain.Shop;
 @Transactional(readOnly = true)
 public interface PictureRepository extends JpaRepository<Picture, Long> {
 	
+	List<Picture> findByShop(Shop Shop);
+	
 }

@@ -20,8 +20,7 @@ public class Picture {
 	
 	private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 	private Date dateReg;
-	
-	
+
 	/*
 	@ManyToOne
 	@JoinColumn(name="id")

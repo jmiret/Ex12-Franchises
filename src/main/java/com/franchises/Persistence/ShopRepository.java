@@ -14,6 +14,6 @@ import com.franchises.Domain.Shop;
 public interface ShopRepository extends JpaRepository<Shop, Long> {
 
 	//@Query("<JPQ statement here>")
-	List<Shop> findByPicture(Picture picture);
+	//List<Shop> findByPicture(Picture picture);
 	
 }
