@@ -20,13 +20,11 @@ public class Picture {
 	
 	private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 	private Date dateReg;
-
-	/*
+	
 	@ManyToOne
-	@JoinColumn(name="id")
+	//@JoinColumn(name="id")
 	private Shop shop;
-	*/
-
+	
 	public Picture() {}
 	
 	public Picture(String pictureName, double price) {
@@ -43,6 +41,24 @@ public class Picture {
 		this.pictureAuthor = pictureAuthor;		
 		this.price = price;
 		this.dateReg = new Date();
+	}
+	
+	public Picture(String pictureName, double price, Shop shop) {
+		super();
+		this.pictureName = pictureName;
+		this.pictureAuthor = "Anonymous";		
+		this.price = price;
+		this.dateReg = new Date();
+		this.shop = shop;
+	}
+				
+	public Picture(String pictureName, String pictureAuthor, double price, Shop shop) {
+		super();
+		this.pictureName = pictureName;
+		this.pictureAuthor = pictureAuthor;		
+		this.price = price;
+		this.dateReg = new Date();
+		this.shop = shop;
 	}
 	
 	/*

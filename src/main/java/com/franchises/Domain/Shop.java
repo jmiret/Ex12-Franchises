@@ -14,14 +14,16 @@ public class Shop {
 	private @Id @GeneratedValue long id;
 	private String name;
 	private int picturesNumber;
-		
+	
+	/*
 	@OneToMany
 	private Picture picture;
 			
 	//@OneToMany(mappedBy = "id")
 	@OneToMany(targetEntity = Picture.class)
 	private List<Picture> pictures;	
-		
+	*/
+	
 	public Shop() {}
 
 	public Shop(String name, int picturesNumber) {
@@ -53,10 +55,12 @@ public class Shop {
 	public void setPicturesNumber(int picturesNumber) {
 		this.picturesNumber = picturesNumber;
 	}
-		
+	
+	/*
 	public void addPicture(Picture picture) {
 		this.pictures.add(picture);
 	}
+	*/
 			
 	@Override
 	public int hashCode() {

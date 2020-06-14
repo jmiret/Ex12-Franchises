@@ -28,14 +28,8 @@ public class LoadDatabase {
 			
 			Picture picture_1 = new Picture("Karma", 12000);
 			Picture picture_2 = new Picture("Milking Time", "Elioth Gruner", 120000);
-			Picture picture_3 = new Picture("Bird's Eye View of the City of Omaha Nebraska", "Albert Ruger", 1500000);
-			
-			/*
-			shop_1.addPicture(picture_1);
-			shop_1.addPicture(picture_2);
-			shop_1.addPicture(picture_3);
-			*/
-			
+			Picture picture_3 = new Picture("Bird's Eye View of the City of Omaha Nebraska", "Albert Ruger", 1500000, shop_1);
+						
 			log.info("Preloading... " + shopRepository.save(shop_1));
 			log.info("Preloading... " + shopRepository.save(shop_2));
 			log.info("Preloading... " + shopRepository.save(shop_3));
