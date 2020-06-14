@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.franchises.Domain.Picture;
 import com.franchises.Domain.Shop;
 
-import com.franchises.Exceptions.ToDoException;
+import com.franchises.Exceptions.CustomException;
 import com.franchises.Persistence.PictureRepository;
 import com.franchises.Persistence.ShopRepository;
 
@@ -58,7 +58,7 @@ public class PictureController {
 			//pictureRepository.createPicture(newPicture, shopRepository.findShopById(id));
 			return pictureRepository.save(newPicture);
 		} else {
-			 throw new ToDoException("Exceede pictures number.");
+			 throw new CustomException("Exceede pictures number.");
 		}
 	}
 		
