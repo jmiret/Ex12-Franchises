@@ -3,6 +3,7 @@ package com.franchises.Controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,12 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.franchises.Domain.Picture;
 import com.franchises.Domain.Shop;
 import com.franchises.Persistence.PictureRepository;
+import com.franchises.Persistence.ShopRepository;
 
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class PictureController {
 	
 	private final PictureRepository pictureRepository;
+	private ShopRepository shopRepository;
 			
 	public PictureController(PictureRepository pictureRepository) {		
 		super();
@@ -31,17 +34,27 @@ public class PictureController {
 		return pictureRepository.findAll();
 	}
 	
-	//createPicture
+	// createPicture
 	@PostMapping("/shops/{id}/pictures")
-	Picture addPicture(@RequestBody Picture newPicture, @PathVariable Long id) {
+	Picture addPicture(Shop shop, @RequestBody Picture newPicture, @PathVariable Long id) {
+		shop = shopRepository.findShopById(id);
+		newPicture.setShop(shop);
 		return pictureRepository.save(newPicture);		
 	}
-	
+		
 	// readerAllPicturesInShop	
 	@GetMapping("/shops/{id}/pictures")
 	List<Picture> readerAllPicturesInShop(Shop shop, @PathVariable Long id) {
 		shop.setName(shop.getName());
 		return pictureRepository.findAllByShop(shop);
 	}
+	
+	// deleteAllPicturesInShop	
+	@DeleteMapping("/shops/{id}/pictures")
+	void deleteAllPicturesInShop(Shop shop, @PathVariable Long id) {
+		shop.setName(shop.getName());
+		pictureRepository.deleteAllPicturesInShop(shop);
+	}
+	
 	
 }
