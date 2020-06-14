@@ -3,7 +3,6 @@ package com.franchises.Persistence;
 import java.util.List;
 
 import com.franchises.Domain.Picture;
-import com.franchises.Domain.Shop;
 
 public interface PictureService {
 

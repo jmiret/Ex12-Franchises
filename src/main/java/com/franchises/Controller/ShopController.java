@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.franchises.Domain.Picture;
 import com.franchises.Domain.Shop;
 import com.franchises.Domain.ShopNotFoundException;
 import com.franchises.Persistence.ShopRepository;
@@ -67,11 +66,4 @@ public class ShopController {
 		return shopRepository.findAll();
 	}
 	
-	// readerAllPicturesInShop	
-	@GetMapping("/shops/{id}/pictures")
-	List<Picture> readerAllPicturesInShop(@RequestBody Shop shop, @PathVariable Long id) {	
-	 
-		//return shopRepository.findByShop(shop);
-		return null;
-	}
 }
