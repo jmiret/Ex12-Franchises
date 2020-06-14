@@ -1,4 +1,4 @@
-package com.franchises.Domain;
+package com.franchises.Exceptions;
 
 public class ShopNotFoundException extends RuntimeException {
 

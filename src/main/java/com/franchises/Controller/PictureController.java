@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.franchises.Domain.Picture;
 import com.franchises.Domain.Shop;
+
+import com.franchises.Exceptions.ToDoException;
 import com.franchises.Persistence.PictureRepository;
 import com.franchises.Persistence.ShopRepository;
+
+
 
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
@@ -41,7 +45,7 @@ public class PictureController {
 	Picture createPicture(@RequestBody Picture newPicture, @PathVariable Long id) throws Exception {
 		int nowPicturesInShop = pictureRepository.countPicturesByShop(shopRepository.findShopById(id));
 		int maxPicturesNumberInShop = shopRepository.findShopById(id).getPicturesNumber();
-		
+	
 		if(nowPicturesInShop < maxPicturesNumberInShop) {
 		
 			// El constructor no controla el objecto instanciado???
@@ -54,7 +58,7 @@ public class PictureController {
 			//pictureRepository.createPicture(newPicture, shopRepository.findShopById(id));
 			return pictureRepository.save(newPicture);
 		} else {
-			 throw new Exception("Max Pictures Number");
+			 throw new ToDoException("Exceede pictures number.");
 		}
 	}
 		

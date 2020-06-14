@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.franchises.Domain.Shop;
-import com.franchises.Domain.ShopNotFoundException;
+import com.franchises.Exceptions.ShopNotFoundException;
 import com.franchises.Persistence.ShopRepository;
 
 @RestController
