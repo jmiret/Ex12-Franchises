@@ -48,9 +48,11 @@ public class ShopController {
 			shop.setName(newShop.getName());
 			shop.setPicturesNumber(newShop.getPicturesNumber());
 			return shopRepository.save(shop);
-		}).orElseGet(() -> {
-			newShop.setId(id);
-			return shopRepository.save(newShop);
+		}).orElseThrow(() -> {
+			return new ShopNotFoundException(id);
+		//}).orElseGet(() -> {
+			//newShop.setId(id);
+			//return shopRepository.save(newShop);
 		});
 	}
 	
