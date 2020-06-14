@@ -21,9 +21,9 @@ public class LoadDatabase {
 		
 		return args -> {
 			
-			Shop shop_1 = new Shop("Shop_1", 15);
-			Shop shop_2 = new Shop("Shop_2", 25);
-			Shop shop_3 = new Shop("Shop_3", 35);
+			Shop shop_1 = new Shop("Shop_1", 5);
+			Shop shop_2 = new Shop("Shop_2", 4);
+			Shop shop_3 = new Shop("Shop_3", 2);
 			
 			Picture picture_1 = new Picture("Karma", 12000, shop_1);
 			Picture picture_2 = new Picture("Milking Time", "Elioth Gruner", 120000, shop_1);

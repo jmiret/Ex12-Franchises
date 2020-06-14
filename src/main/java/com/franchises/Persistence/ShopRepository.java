@@ -11,7 +11,8 @@ import com.franchises.Domain.Shop;
 @Transactional(readOnly = true)
 public interface ShopRepository extends JpaRepository<Shop, Long> {
 	
-	@Query("SELECT s from Shop s where s.id = :id")
-	Shop findShopById(@Param("id") Long id);
+	@Query(value = "SELECT s from Shop s where s.id = ?1", nativeQuery = false)
+	@Transactional
+	Shop findShopById(@Param("shopId") Long id);
 	
 }

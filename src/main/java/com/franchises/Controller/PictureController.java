@@ -1,5 +1,6 @@
 package com.franchises.Controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,11 +22,12 @@ import com.franchises.Persistence.ShopRepository;
 public class PictureController {
 	
 	private final PictureRepository pictureRepository;
-	private ShopRepository shopRepository;
-			
-	public PictureController(PictureRepository pictureRepository) {		
+	private final ShopRepository shopRepository;
+	
+	public PictureController(PictureRepository pictureRepository, ShopRepository shopRepository) {		
 		super();
 		this.pictureRepository = pictureRepository;
+		this.shopRepository = shopRepository;
 	}
 		
 	// readerAllPictures
@@ -33,19 +35,34 @@ public class PictureController {
 	List<Picture> readerAllPictures() {
 		return pictureRepository.findAll();
 	}
-	
+		
 	// createPicture
 	@PostMapping("/shops/{id}/pictures")
-	Picture addPicture(Shop shop, @RequestBody Picture newPicture, @PathVariable Long id) {
-		shop = shopRepository.findShopById(id);
-		newPicture.setShop(shop);
-		return pictureRepository.save(newPicture);		
+	Picture createPicture(@RequestBody Picture newPicture, @PathVariable Long id) throws Exception {
+		int nowPicturesInShop = pictureRepository.countPicturesByShop(shopRepository.findShopById(id));
+		int maxPicturesNumberInShop = shopRepository.findShopById(id).getPicturesNumber();
+		
+		if(nowPicturesInShop < maxPicturesNumberInShop) {
+		
+			// El constructor no controla el objecto instanciado???
+			if(newPicture.getPictureAuthor() == null) {
+				newPicture.setPictureAuthor("Anonymous");
+			}
+			
+			newPicture.setShop(shopRepository.findShopById(id));
+			newPicture.setDateReg(new Date());
+			//pictureRepository.createPicture(newPicture, shopRepository.findShopById(id));
+			return pictureRepository.save(newPicture);
+		} else {
+			 throw new Exception("Max Pictures Number");
+		}
 	}
 		
 	// readerAllPicturesInShop	
 	@GetMapping("/shops/{id}/pictures")
 	List<Picture> readerAllPicturesInShop(Shop shop, @PathVariable Long id) {
-		shop.setName(shop.getName());
+		//shop.setName(shop.getName());
+		shop.setId(shop.getId());
 		return pictureRepository.findAllByShop(shop);
 	}
 	

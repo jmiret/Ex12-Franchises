@@ -7,9 +7,9 @@ import javax.persistence.Id;
 @Entity
 public class Shop {
 
-	private @Id @GeneratedValue long id;
-	private String name;
-	private int picturesNumber;
+	protected @Id @GeneratedValue long id;
+	protected String name;
+	protected int picturesNumber;
 		
 	public Shop() {}
 
