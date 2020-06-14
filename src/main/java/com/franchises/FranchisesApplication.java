@@ -10,9 +10,6 @@ public class FranchisesApplication {
 
 	public static void main(String[] args) {
 		
-		// Default Tomcat server port 8080		
-		//SpringApplication.run(FranchisesApplication.class, args);
-		
 		// Customize Tomcat server port 
 		SpringApplication app = new SpringApplication(FranchisesApplication.class);
         app.setDefaultProperties(Collections

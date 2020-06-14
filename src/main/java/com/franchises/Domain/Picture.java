@@ -1,12 +1,10 @@
 package com.franchises.Domain;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -16,33 +14,13 @@ public class Picture {
 	private String pictureAuthor;
 	private String pictureName;
 	private double price;
-	private long shopID;
-	
-	private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 	private Date dateReg;
 	
 	@ManyToOne
-	//@JoinColumn(name="id")
 	private Shop shop;
 	
 	public Picture() {}
-	
-	public Picture(String pictureName, double price) {
-		super();
-		this.pictureName = pictureName;
-		this.pictureAuthor = "Anonymous";		
-		this.price = price;
-		this.dateReg = new Date();
-	}
-				
-	public Picture(String pictureName, String pictureAuthor, double price) {
-		super();
-		this.pictureName = pictureName;
-		this.pictureAuthor = pictureAuthor;		
-		this.price = price;
-		this.dateReg = new Date();
-	}
-	
+		
 	public Picture(String pictureName, double price, Shop shop) {
 		super();
 		this.pictureName = pictureName;
@@ -60,25 +38,15 @@ public class Picture {
 		this.dateReg = new Date();
 		this.shop = shop;
 	}
-	
-	/*
-	public Picture(String pictureName, double price, Shop shop) {
-		super();
-		this.pictureName = pictureName;
-		this.pictureAuthor = "Anonymous";		
-		this.price = price;
-		this.dateReg = new Date();
+			
+	public Shop getShop() {
+		return shop;
 	}
-				
-	public Picture(String pictureName, String pictureAuthor, double price, Shop shop) {
-		super();
-		this.pictureName = pictureName;
-		this.pictureAuthor = pictureAuthor;		
-		this.price = price;
-		this.dateReg = new Date();
+
+	public void setShop(Shop shop) {
+		this.shop = shop;
 	}
-	*/
-	
+
 	public String getPictureAuthor() {
 		return pictureAuthor;
 	}
@@ -119,27 +87,18 @@ public class Picture {
 		this.dateReg = dateReg;
 	}
 	
-	
-	public long getShopID() {
-		return shopID;
-	}
-
-	public void setShopID(long shopID) {
-		this.shopID = shopID;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((dateReg == null) ? 0 : dateReg.hashCode());
-		result = prime * result + ((format == null) ? 0 : format.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((pictureAuthor == null) ? 0 : pictureAuthor.hashCode());
 		result = prime * result + ((pictureName == null) ? 0 : pictureName.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((shop == null) ? 0 : shop.hashCode());
 		return result;
 	}
 
@@ -157,11 +116,6 @@ public class Picture {
 				return false;
 		} else if (!dateReg.equals(other.dateReg))
 			return false;
-		if (format == null) {
-			if (other.format != null)
-				return false;
-		} else if (!format.equals(other.format))
-			return false;
 		if (id != other.id)
 			return false;
 		if (pictureAuthor == null) {
@@ -176,13 +130,18 @@ public class Picture {
 			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
+		if (shop == null) {
+			if (other.shop != null)
+				return false;
+		} else if (!shop.equals(other.shop))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "Picture [id=" + id + ", pictureAuthor=" + pictureAuthor + ", pictureName=" + pictureName + ", price="
-				+ price + ", format=" + format + ", dateReg=" + dateReg + "]";
+				+ price + ", dateReg=" + dateReg + ", shop=" + shop + "]";
 	}
 	
 }

@@ -62,6 +62,7 @@ public class ShopServiceImp implements ShopService {
 		
 		//return repository.findByPicture(picture);
 		return null;
+		
 	}
 
 }
